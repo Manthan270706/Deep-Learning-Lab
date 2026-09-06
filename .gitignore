@@ -1,2 +1,11 @@
 *.docx
 *.doc
+# Local Python environment
+DL_Lab/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
