@@ -1,11 +1,38 @@
+# Documents and reports
 *.docx
 *.doc
-# Local Python environment
-DL_Lab/
 
-# Python cache
+# Python virtual environment
+DL_Lab/
+venv/
+.venv/
+env/
+
+# Python cache & compiled files
 __pycache__/
 *.py[cod]
+*$py.class
 
-# Jupyter
+# Jupyter Notebook checkpoints
 .ipynb_checkpoints/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large model weights and training checkpoints (exceed GitHub 100MB limit)
+*.pth
+*.pt
+*.safetensors
+*.bin
+checkpoint-*/
+bert_agnews_results/
+
+# Large compressed archives (data is tracked in extracted format)
+*.tar.gz
+*.tgz
+*.tar
+*.zip
+*.rar
