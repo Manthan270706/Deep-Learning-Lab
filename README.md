@@ -1,6 +1,6 @@
 # Deep Learning Laboratory
 
-A comprehensive repository containing laboratory assignments, implementations, datasets, and experiments for the **Deep Learning** course (VIT B.Tech). The lab covers fundamental and advanced deep learning concepts ranging from multi-layer perceptrons to recurrent neural networks, convolutional neural networks, transfer learning, and transformer-based models.
+A comprehensive repository containing laboratory assignments, implementations, datasets, and experiments for the **Deep Learning** course (VIT B.Tech). The lab covers fundamental and advanced deep learning concepts ranging from multi-layer perceptrons to recurrent neural networks, convolutional neural networks, transfer learning, transformer-based NLP models, and cutting-edge Vision Transformers (ViT).
 
 ---
 
@@ -16,6 +16,7 @@ A comprehensive repository containing laboratory assignments, implementations, d
   - [Assignment 6: CNN for Tomato Leaf Disease Classification](#assignment-6-cnn-for-tomato-leaf-disease-classification)
   - [Assignment 7: Transfer Learning with Pre-trained CNNs (CIFAR-10)](#assignment-7-transfer-learning-with-pre-trained-cnns-cifar-10)
   - [Assignment 8: Fine-Tuning BERT for Text Classification (AG News)](#assignment-8-fine-tuning-bert-for-text-classification-ag-news)
+  - [Assignment 9: Vision Transformer (ViT) vs. CNN (ResNet-18)](#assignment-9-vision-transformer-vit-vs-cnn-resnet-18)
 - [Repository Structure](#-repository-structure)
 - [Prerequisites & Environment Setup](#-prerequisites--environment-setup)
 - [Data & Model Checkpoint Management](#-data--model-checkpoint-management)
@@ -34,6 +35,7 @@ A comprehensive repository containing laboratory assignments, implementations, d
 | **6** | Computer Vision & Image Classification | Deep Convolutional Neural Network (CNN) | Tomato Leaf Disease (10K+ images) | TensorFlow / Keras |
 | **7** | Transfer Learning & Model Comparison | AlexNet, VGG-16, ResNet-50, EfficientNet-B0 | CIFAR-10 | PyTorch / Torchvision |
 | **8** | Transformers & NLP Fine-Tuning | Pre-trained BERT (`bert-base-uncased`) | AG News (Multiclass) | PyTorch / Hugging Face Transformers |
+| **9** | Vision Transformers vs. CNNs | ViT-B/16 vs. ResNet-18 (Head-to-Head Benchmark) | CIFAR-10 | PyTorch / Torchvision |
 
 ---
 
@@ -104,6 +106,14 @@ A comprehensive repository containing laboratory assignments, implementations, d
   - Comprehensive evaluation: Accuracy, Precision, Recall, Macro/Weighted F1-score, and Confusion Matrix.
   - Exporting tokenizer and configuration files for inference.
 
+### Assignment 9: Vision Transformer (ViT) vs. CNN (ResNet-18)
+- **Goal:** Benchmarking modern attention-based Vision Transformers against classic spatial-inductive Convolutional Networks.
+- **Workflow:**
+  - Deconstructing and visualizing the ViT tokenization mechanism ($16 \times 16$ image patch decomposition yielding $196$ visual tokens).
+  - Comparing **ResNet-18** (11.2M parameters) with **ViT-B/16** (85.8M parameters) under identical transfer learning setups on CIFAR-10.
+  - Rigorous benchmarking: Loss/Accuracy learning curves, Macro & Weighted F1-scores, Confusion Matrices, and Inference Latency per sample.
+  - In-depth theoretical analysis of inductive biases (translation equivariance & locality vs. global all-to-all self-attention).
+
 ---
 
 ## 📁 Repository Structure
@@ -148,6 +158,9 @@ Deep-Learning-Lab/
 │       ├── config.json
 │       ├── tokenizer.json
 │       └── tokenizer_config.json
+│
+├── Assignment 9/
+│   └── Assignment_9.ipynb              # Vision Transformer (ViT-B/16) vs. CNN (ResNet-18)
 │
 ├── .gitignore                          # Clean ignore rules for large weights & envs
 └── README.md
