@@ -1,6 +1,6 @@
 # Deep Learning Laboratory
 
-A comprehensive repository containing laboratory assignments, implementations, datasets, and experiments for the **Deep Learning** course (VIT B.Tech). The lab covers fundamental and advanced deep learning concepts ranging from multi-layer perceptrons to recurrent neural networks, convolutional neural networks, transfer learning, transformer-based NLP models, and cutting-edge Vision Transformers (ViT).
+A comprehensive repository containing laboratory assignments, implementations, datasets, and experiments for the **Deep Learning** course (VIT B.Tech). The lab covers fundamental and advanced deep learning concepts ranging from multi-layer perceptrons to recurrent neural networks, convolutional neural networks, transfer learning, transformer-based NLP models, Vision Transformers (ViT), and multimodal audio processing systems.
 
 ---
 
@@ -17,6 +17,7 @@ A comprehensive repository containing laboratory assignments, implementations, d
   - [Assignment 7: Transfer Learning with Pre-trained CNNs (CIFAR-10)](#assignment-7-transfer-learning-with-pre-trained-cnns-cifar-10)
   - [Assignment 8: Fine-Tuning BERT for Text Classification (AG News)](#assignment-8-fine-tuning-bert-for-text-classification-ag-news)
   - [Assignment 9: Vision Transformer (ViT) vs. CNN (ResNet-18)](#assignment-9-vision-transformer-vit-vs-cnn-resnet-18)
+  - [Assignment 10: Audio Classification with Integrated STT & TTS](#assignment-10-audio-classification-with-integrated-stt--tts)
 - [Repository Structure](#-repository-structure)
 - [Prerequisites & Environment Setup](#-prerequisites--environment-setup)
 - [Data & Model Checkpoint Management](#-data--model-checkpoint-management)
@@ -36,6 +37,7 @@ A comprehensive repository containing laboratory assignments, implementations, d
 | **7** | Transfer Learning & Model Comparison | AlexNet, VGG-16, ResNet-50, EfficientNet-B0 | CIFAR-10 | PyTorch / Torchvision |
 | **8** | Transformers & NLP Fine-Tuning | Pre-trained BERT (`bert-base-uncased`) | AG News (Multiclass) | PyTorch / Hugging Face Transformers |
 | **9** | Vision Transformers vs. CNNs | ViT-B/16 vs. ResNet-18 (Head-to-Head Benchmark) | CIFAR-10 | PyTorch / Torchvision |
+| **10** | Multimodal Audio AI & Speech Processing | Audio-CNN (Spectrogram) + STT (BiGRU/CTC) + TTS (Vocoder) | Spoken Audio Commands (8 Classes) | PyTorch / SciPy |
 
 ---
 
@@ -114,6 +116,15 @@ A comprehensive repository containing laboratory assignments, implementations, d
   - Rigorous benchmarking: Loss/Accuracy learning curves, Macro & Weighted F1-scores, Confusion Matrices, and Inference Latency per sample.
   - In-depth theoretical analysis of inductive biases (translation equivariance & locality vs. global all-to-all self-attention).
 
+### Assignment 10: Audio Classification with Integrated STT & TTS
+- **Goal:** Design and implement an end-to-end multimodal speech processing application combining Audio Classification, Speech-to-Text (STT), and Text-to-Speech (TTS).
+- **Workflow:**
+  - Audio feature extraction transforming raw 1D waveforms into 2D **Log-Mel Spectrograms** ($40 \text{ Mels} \times 64 \text{ time frames}$) via Short-Time Fourier Transform (STFT).
+  - Designing and training a 2D **Audio-CNN** classifier across 8 spoken command classes with batch normalization, dropout, and adaptive average pooling.
+  - Implementing an acoustic **Speech-to-Text (ASR)** model using Bi-directional GRU with Connectionist Temporal Classification (CTC) greedy decoding.
+  - Developing a parametric **Text-to-Speech (TTS)** formant vocoder synthesizing natural spoken waveforms from action responses.
+  - Constructing an interactive multimodal **Voice Assistant** pipeline and evaluating performance using Accuracy, F1-scores, Confusion Matrix, Character Error Rate (CER), Word Error Rate (WER), and latency profiling.
+
 ---
 
 ## 📁 Repository Structure
@@ -162,6 +173,9 @@ Deep-Learning-Lab/
 ├── Assignment 9/
 │   └── Assignment_9.ipynb              # Vision Transformer (ViT-B/16) vs. CNN (ResNet-18)
 │
+├── Assignment 10/
+│   └── Assignment_10.ipynb             # Multimodal Audio Classification, STT & TTS
+│
 ├── .gitignore                          # Clean ignore rules for large weights & envs
 └── README.md
 ```
@@ -189,7 +203,7 @@ source dl_env/bin/activate
 
 ### 3. Install Dependencies
 ```bash
-pip install tensorflow torch torchvision transformers datasets scikit-learn pandas numpy matplotlib seaborn jupyter
+pip install tensorflow torch torchvision transformers datasets scikit-learn scipy pandas numpy matplotlib seaborn jupyter python-docx
 ```
 
 ---
@@ -201,6 +215,8 @@ pip install tensorflow torch torchvision transformers datasets scikit-learn pand
 - **Model Checkpoints:**
   - Lightweight `.keras` models are tracked in the repository.
   - Massive PyTorch weight checkpoints (`*.pth`), intermediate optimizer states (`*.pt`), raw `.tar.gz` archives, and large safetensors files (>100 MB) are excluded via `.gitignore` to maintain a clean repository adhering to GitHub file size limits.
+- **Reports:**
+  - College report documents (`*.docx`) are excluded from version control to maintain repository lightness.
 
 ---
 
